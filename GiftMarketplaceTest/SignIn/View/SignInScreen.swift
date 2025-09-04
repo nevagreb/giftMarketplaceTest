@@ -3,7 +3,8 @@
 import SwiftUI
 
 struct SignInScreen: View {
-    let onSkip: () -> Void
+    let onSignedIn: (String) -> Void
+    @StateObject private var vm = SignInViewModel()
     
     var body: some View {
         NavigationStack {
@@ -17,10 +18,25 @@ struct SignInScreen: View {
             .background(background)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Skip", action: onSkip)
-                        .tint(.primary)
+                    Button("Skip", action: {
+                        onSignedIn("skip-token")
+                    })
+                    .tint(.primary)
                 }
             }
+            .overlay { if vm.isLoading { ProgressView().controlSize(.large) } }
+            .alert("Sign-in error", isPresented: .constant(vm.error != nil)) {
+                Button("OK") { vm.error = nil }
+            } message: { Text(vm.error ?? "") }
+            .task {
+                vm.startAuthStateListener()
+                vm.onSignedIn = { token in
+                    onSignedIn(token)
+                }
+            }
+        }
+        .onAppear {
+            vm.signOut()
         }
     }
     
@@ -40,8 +56,8 @@ struct SignInScreen: View {
     
     private var authButtons: some View {
         VStack(spacing: 8) {
-            SignInButton(kind: .apple, action: {})
-            SignInButton(kind: .google, action: {})
+            SignInButton(kind: .apple, action: vm.signInWithApple)
+            SignInButton(kind: .google, action: signInWithGoogle)
         }
         .padding(.bottom, 16)
     }
@@ -69,11 +85,19 @@ struct SignInScreen: View {
         }
         .ignoresSafeArea()
     }
+    
+    private func signInWithGoogle() {
+        if let vc = UIApplication.shared.connectedScenes
+                                    .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
+                                    .first {
+            Task { await vm.signInWithGoogle(presenting: vc) }
+        }
+    }
 }
 
 #Preview {
     NavigationStack {
-        SignInScreen(onSkip: {})
+        SignInScreen(onSignedIn: {_ in })
     }
 }
 

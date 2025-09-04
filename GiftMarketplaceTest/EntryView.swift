@@ -3,28 +3,25 @@
 import SwiftUI
 
 struct EntryView: View {
-    @AppStorage("didFinishedSignIn") private var didFinishedSignIn: Bool = false
-    
+    @AppStorage("authIDToken") private var storedToken: String?
+
     var body: some View {
-        Group {
-            if didFinishedSignIn {
+        ZStack {
+            if let _ = storedToken {
                 MainScreen()
                     .transition(.opacity)
                     .zIndex(1)
             } else {
-                SignInScreen(onSkip: skipSignIn)
-                    .transition(.opacity)
-                    .zIndex(2)
+                SignInScreen(
+                    onSignedIn: { token in
+                        storedToken = token
+                    }
+                )
+                .transition(.opacity)
+                .zIndex(2)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: didFinishedSignIn)
-        .onAppear {
-            UserDefaults.standard.removeObject(forKey: "didFinishedSignIn")
-        }
-    }
-    
-    func skipSignIn() {
-        didFinishedSignIn = true
+        .animation(.easeInOut(duration: 0.3), value: storedToken != nil)
     }
 }
 
