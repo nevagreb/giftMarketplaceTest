@@ -6,27 +6,29 @@ struct GiftScreen: View {
     @State private var currency = "USD"
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 10) {
-                giftBlock
-                
-                PromoBanner(promo: PromoBannerModel.mockData, action: {})
-                    .padding(.bottom, 6)
-                CategoriesRow(items: CategoryModel.mockData)
-                FilterSection(products: ProductCardModel.mockData,
-                              viewAllAction: {},
-                              onToggleFavorite: {_ in})
-            }
-        }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.customBackground.ignoresSafeArea())
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {}) {
-                    deliveryLabel
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 10) {
+                    giftBlock
+                    
+                    PromoBanner(promo: PromoBannerModel.mockData, action: {})
+                        .padding(.bottom, 6)
+                    CategoriesRow(items: CategoryModel.mockData)
+                    FilterSection(products: ProductCardModel.mockData,
+                                  viewAllAction: {},
+                                  onToggleFavorite: {_ in})
                 }
-                .tint(.primary)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.customBackground.ignoresSafeArea())
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {}) {
+                        deliveryLabel
+                    }
+                    .tint(.primary)
+                }
             }
         }
     }
@@ -39,18 +41,6 @@ struct GiftScreen: View {
             CurrencyBar(currencyCode: $currency)
         }
     }
-    
-//    private var giftBlock: some View {
-//        HStack {
-//            Text("GIFTS")
-//                .padding(.bottom, 20)
-//                .foregroundStyle(.primary)
-//                .font(.custom("Impact", size: 45))
-//                .textCase(.uppercase)
-//            Spacer()
-//            SearchPillButton(action: {})
-//        }
-//    }
     
     private var giftBlock: some View {
         HStack(alignment: .top) {

@@ -6,15 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		6302D1C72E69A318008E6185 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302D1C62E69A318008E6185 /* Color+Ext.swift */; };
-		63330E1D2E69D41F008809C4 /* Swift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63330E1C2E69D41F008809C4 /* Swift+Ext.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		6302D1702E69A15A008E6185 /* GiftMarketplaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftMarketplaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6302D1C62E69A318008E6185 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
-		63330E1C2E69D41F008809C4 /* Swift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,8 +32,6 @@
 		6302D1672E69A15A008E6185 = {
 			isa = PBXGroup;
 			children = (
-				6302D1C62E69A318008E6185 /* Color+Ext.swift */,
-				63330E1C2E69D41F008809C4 /* Swift+Ext.swift */,
 				6302D1722E69A15A008E6185 /* GiftMarketplaceTest */,
 				6302D1712E69A15A008E6185 /* Products */,
 			);
@@ -128,8 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6302D1C72E69A318008E6185 /* Color+Ext.swift in Sources */,
-				63330E1D2E69D41F008809C4 /* Swift+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
