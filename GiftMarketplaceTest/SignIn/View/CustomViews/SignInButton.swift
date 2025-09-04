@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct AuthButton: View {
+struct SignInButton: View {
     enum Kind { case apple, google }
 
     let kind: Kind
@@ -30,7 +30,3 @@ struct AuthButton: View {
             .cornerRadius(10)
     }
 }
-
-//#Preview {
-//    AuthButton(with: .apple, action: {})
-//}

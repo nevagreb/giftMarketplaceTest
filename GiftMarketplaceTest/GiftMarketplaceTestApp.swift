@@ -6,7 +6,7 @@ import SwiftUI
 struct GiftMarketplaceTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EntryView()
         }
     }
 }

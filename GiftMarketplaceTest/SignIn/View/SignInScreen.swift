@@ -2,20 +2,24 @@
 
 import SwiftUI
 
-struct AuthScreen: View {
+struct SignInScreen: View {
+    let onSkip: () -> Void
+    
     var body: some View {
-        VStack{
-            welcomeBlock
-            Spacer()
-            authButtons
-            terms
-        }
-        .padding()
-        .background(background)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Skip") {}
-                    .tint(.primary)
+        NavigationStack {
+            VStack{
+                welcomeBlock
+                Spacer()
+                authButtons
+                terms
+            }
+            .padding()
+            .background(background)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Skip", action: onSkip)
+                        .tint(.primary)
+                }
             }
         }
     }
@@ -36,8 +40,8 @@ struct AuthScreen: View {
     
     private var authButtons: some View {
         VStack(spacing: 8) {
-            AuthButton(kind: .apple, action: {})
-            AuthButton(kind: .google, action: {})
+            SignInButton(kind: .apple, action: {})
+            SignInButton(kind: .google, action: {})
         }
         .padding(.bottom, 16)
     }
@@ -69,7 +73,7 @@ struct AuthScreen: View {
 
 #Preview {
     NavigationStack {
-        AuthScreen()
+        SignInScreen(onSkip: {})
     }
 }
 
