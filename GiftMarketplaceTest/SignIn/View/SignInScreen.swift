@@ -25,7 +25,9 @@ struct SignInScreen: View {
                 }
             }
             .overlay { if vm.isLoading { ProgressView().controlSize(.large) } }
-            .alert("Sign-in error", isPresented: .constant(vm.error != nil)) {
+            .alert("Sign-in error",
+                   isPresented: Binding(get: { vm.error != nil },
+                                        set: { if !$0 { vm.error = nil } })) {
                 Button("OK") { vm.error = nil }
             } message: { Text(vm.error ?? "") }
             .task {
@@ -34,9 +36,6 @@ struct SignInScreen: View {
                     onSignedIn(token)
                 }
             }
-        }
-        .onAppear {
-            vm.signOut()
         }
     }
     

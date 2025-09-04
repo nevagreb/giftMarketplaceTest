@@ -3,15 +3,11 @@
 import SwiftUI
 
 struct EntryView: View {
-    @AppStorage("authIDToken") private var storedToken: String?
+    @AppStorage("authIDToken") private var storedToken: String = ""
 
     var body: some View {
         ZStack {
-            if let _ = storedToken {
-                MainScreen()
-                    .transition(.opacity)
-                    .zIndex(1)
-            } else {
+            if storedToken.isEmpty {
                 SignInScreen(
                     onSignedIn: { token in
                         storedToken = token
@@ -19,9 +15,13 @@ struct EntryView: View {
                 )
                 .transition(.opacity)
                 .zIndex(2)
+            } else {
+                MainScreen()
+                    .transition(.opacity)
+                    .zIndex(1)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: storedToken != nil)
+        .animation(.easeInOut(duration: 0.3), value: !storedToken.isEmpty)
     }
 }
 

@@ -34,17 +34,13 @@ final class SignInViewModel: NSObject, ObservableObject {
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance.signOut()
             user = nil
+            onSignedIn?("")
         } catch {
             self.error = error.localizedDescription
         }
     }
 
     // MARK: - Google
-
-    func restorePreviousGoogleSignInIfPossible(presenting vc: UIViewController) async {
-        guard GIDSignIn.sharedInstance.hasPreviousSignIn() else { return }
-        await signInWithGoogle(presenting: vc)
-    }
 
     func signInWithGoogle(presenting viewController: UIViewController) async {
         isLoading = true
@@ -60,7 +56,6 @@ final class SignInViewModel: NSObject, ObservableObject {
             let _ = try await Auth.auth().signIn(with: credential)
             
             try await sendIDTokenToServer()
-            //self.user = authResult.user
         } catch {
             self.error = userMessage(error)
         }
@@ -88,7 +83,7 @@ final class SignInViewModel: NSObject, ObservableObject {
     
     // MARK: - Token helper (Firebase ID Token)
 
-    func fetchFirebaseIDToken(forcingRefresh: Bool = true) async throws -> String? {
+    func fetchFirebaseIDToken(forcingRefresh: Bool = false) async throws -> String? {
         guard let user = Auth.auth().currentUser else { return nil }
         return try await withCheckedThrowingContinuation { cont in
             user.getIDTokenForcingRefresh(forcingRefresh) { token, error in
