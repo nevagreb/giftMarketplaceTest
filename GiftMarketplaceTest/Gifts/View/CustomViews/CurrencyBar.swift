@@ -7,15 +7,15 @@ struct CurrencyBar: View {
     
     var body: some View {
         Menu {
-            Picker("Currency", selection: $currencyCode) {
-                ForEach(Self.availableCurrencies, id: \.self) { code in
+            Picker(DS.GiftToolBar.pickerName, selection: $currencyCode) {
+                ForEach(DS.GiftToolBar.availableCurrencies, id: \.self) { code in
                     Text(code).tag(code)
                 }
             }
         } label: {
             HStack {
                 Text(currencyCode)
-                Image(systemName: "chevron.down")
+                Image(systemName: DS.GiftToolBar.chevronImageName)
                     .font(.body.weight(.semibold))
                     .imageScale(.small)
             }
@@ -23,12 +23,8 @@ struct CurrencyBar: View {
         }
         .menuActionDismissBehavior(.automatic)
     }
-    
-    private static let availableCurrencies: [String] = [
-        "USD","EUR","GBP","CAD","AUD","JPY","CNY"
-    ]
 }
 
 #Preview {
-    CurrencyBar(currencyCode: .constant("USD"))
+    CurrencyBar(currencyCode: .constant(DS.GiftToolBar.defaultCurrency))
 }

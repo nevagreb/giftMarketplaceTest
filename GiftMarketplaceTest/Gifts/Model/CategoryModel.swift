@@ -10,11 +10,11 @@ struct CategoryModel: Identifiable {
     let action: () -> Void
     
     static let mockData: [CategoryModel] = {
-        [ .init(title: "New Popular Arrivals", imageName: "catNew", action: {}),
-          .init(title: "Mixed Flowers", imageName: "catMixed", action: {}),
-          .init(title: "Thank you", imageName: "catThanks", action: {}),
-            .init(title: "New Popular Arrivals", imageName: "catNew", action: {}),
-            .init(title: "Mixed Flowers", imageName: "catMixed", action: {}),
-            .init(title: "Thank you", imageName: "catThanks", action: {})]
+        [ .init(title: DS.GiftCategory.Title.new.rawValue, imageName: DS.GiftCategory.Image.new.rawValue, action: {}),
+          .init(title: DS.GiftCategory.Title.mixed.rawValue, imageName: DS.GiftCategory.Image.mixed.rawValue, action: {}),
+          .init(title: DS.GiftCategory.Title.thank.rawValue, imageName: DS.GiftCategory.Image.thank.rawValue, action: {}),
+          .init(title: DS.GiftCategory.Title.new.rawValue, imageName: DS.GiftCategory.Image.new.rawValue, action: {}),
+          .init(title: DS.GiftCategory.Title.mixed.rawValue, imageName: DS.GiftCategory.Image.mixed.rawValue, action: {}),
+          .init(title: DS.GiftCategory.Title.thank.rawValue, imageName: DS.GiftCategory.Image.thank.rawValue, action: {})]
     }()
 }

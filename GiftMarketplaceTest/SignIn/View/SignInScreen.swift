@@ -19,17 +19,17 @@ struct SignInScreen: View {
             .background(background)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Skip", action: {
-                        onSignedIn("skip-token")
+                    Button(DS.SignIn.skipButtonTitle, action: {
+                        onSignedIn(AppKeys.Storage.skipToken)
                     })
                     .tint(.primary)
                 }
             }
             .overlay { if vm.isLoading { ProgressView().controlSize(.large).tint(.primary) } }
-            .alert("Sign-in error",
+            .alert(DS.SignIn.alertTitle,
                    isPresented: Binding(get: { vm.error != nil },
                                         set: { if !$0 { vm.error = nil } })) {
-                Button("OK") { vm.error = nil }
+                Button(DS.SignIn.alertOkButtonTitle) { vm.error = nil }
             } message: { Text(vm.error ?? "") }
             .task {
                 vm.startAuthStateListener()
@@ -42,12 +42,12 @@ struct SignInScreen: View {
     
     private var welcomeBlock: some View {
         VStack(alignment: .leading) {
-            Text("Welcome")
+            Text(DS.SignIn.welcomeTitle)
                 .padding(.bottom, 20)
                 .foregroundStyle(.primary)
-                .font(.custom("Impact", size: 45))
+                .font(.custom(DS.Font.titleStyleFont, size: 45))
                 .textCase(.uppercase)
-            Text("Enter your phone number. We will send you an SMS with a confirmation code to this number.")
+            Text(DS.SignIn.welcomeSubtitle)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.leading)
@@ -64,13 +64,13 @@ struct SignInScreen: View {
     
     private var terms: some View {
         VStack(alignment: .center) {
-            Text("By continuing, you agree to Assetsy’s ")
+            Text(DS.SignIn.termsDescription)
             
-            Text("Terms of Use")
+            Text(DS.SignIn.terms)
                 .foregroundStyle(.blue)
                 .underline(true, color: .blue)
-            + Text(" and ")
-            + Text("Privacy Policy")
+            + Text(DS.SignIn.and)
+            + Text(DS.SignIn.privacy)
                 .foregroundStyle(.blue)
                 .underline(true, color: .blue)
         }
@@ -80,9 +80,9 @@ struct SignInScreen: View {
     private var background: some View {
         ZStack {
             colorScheme == .light ? Color.customLightBackground : Color.customDarkBackground
-            Image("circle")
+            Image(DS.SignIn.backgroundCircleImage)
                 .foregroundStyle(colorScheme == .light ? Color.lightCircleBlue : Color.darkCircleBlue)
-            Image("flower")
+            Image(DS.SignIn.backgroundFlowerImage)
         }
         .ignoresSafeArea()
     }

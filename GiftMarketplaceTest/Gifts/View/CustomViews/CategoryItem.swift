@@ -24,7 +24,6 @@ struct CategoryItem: View {
         }
         .buttonStyle(.plain)
         .frame(width: 100)
-        //.padding(6)
     }
 }
 

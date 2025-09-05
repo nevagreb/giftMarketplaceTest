@@ -9,9 +9,9 @@ struct SearchPillButton: View {
     var body: some View {
         Button(action: action) {
             Label {
-                Text("Search")
+                Text(DS.GiftTitleBlock.searchPlaceholderText)
             } icon: {
-                Image(systemName: "magnifyingglass")
+                Image(systemName: DS.GiftTitleBlock.searcgIconName)
                     .font(.system(size: 22))
             }
             .foregroundStyle(.secondary)

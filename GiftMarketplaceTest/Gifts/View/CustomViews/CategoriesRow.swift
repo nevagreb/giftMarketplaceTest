@@ -16,7 +16,7 @@ struct CategoriesRow: View {
                     }
                 }
                 
-                Button("Show all") { showAllAction?() }
+                Button(DS.GiftFilters.showAllButtonLabel) { showAllAction?() }
                     .bold()
                     .foregroundStyle(.primary)
             }

@@ -3,6 +3,7 @@
 
 import Foundation
 
+// Converts a 2-letter region code (e.g., "US") to its flag emoji
 extension String {
     var flagEmojiFromRegionCode: String {
         let base = "🇦".unicodeScalars.first!.value - "A".unicodeScalars.first!.value

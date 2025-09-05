@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct GiftScreen: View {
-    @State private var currency = "USD"
+    @State private var currency = DS.GiftToolBar.defaultCurrency
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -36,8 +36,8 @@ struct GiftScreen: View {
     
     private var deliveryLabel: some View {
         HStack {
-            Text("Deliver to ")
-            Text("US".flagEmojiFromRegionCode)
+            Text(DS.GiftToolBar.toolBarTitle)
+            Text(DS.GiftToolBar.defaultCountyName.flagEmojiFromRegionCode)
                 .font(.system(size: 42))
             CurrencyBar(currencyCode: $currency)
         }
@@ -46,8 +46,8 @@ struct GiftScreen: View {
     private var giftBlock: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 0) {
-                Text("Gifts")
-                    .font(.custom("Impact", size: 45))
+                Text(DS.GiftTitleBlock.titleText)
+                    .font(.custom(DS.Font.titleStyleFont, size: 45))
                     .foregroundStyle(.primary)
                     .textCase(.uppercase)
                 Spacer()

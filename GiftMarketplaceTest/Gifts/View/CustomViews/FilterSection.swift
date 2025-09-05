@@ -8,13 +8,13 @@ struct FilterSection: View {
     let viewAllAction: () -> Void
     var onToggleFavorite: (UUID) -> Void
     
-    let types: [String] = DS.Filters.Types.options
-    let recipients: [String] = DS.Filters.Recipient.options
-    let sorts: [String] = DS.Filters.Sort.options
+    let types: [String] = DS.GiftFilters.Types.options
+    let recipients: [String] = DS.GiftFilters.Recipient.options
+    let sorts: [String] = DS.GiftFilters.Sort.options
     
-    @State var selectedGiftbox: String = DS.Filters.Types.options[0]
-    @State var selectedRecipient: String = DS.Filters.Recipient.options[0]
-    @State var selectedSort: String = DS.Filters.Sort.options[0]
+    @State var selectedGiftbox: String = DS.GiftFilters.Types.options[0]
+    @State var selectedRecipient: String = DS.GiftFilters.Recipient.options[0]
+    @State var selectedSort: String = DS.GiftFilters.Sort.options[0]
     
     private let columns = [
         GridItem(.flexible(), spacing: 6),
@@ -36,7 +36,7 @@ struct FilterSection: View {
     
     private var viewAllButton: some View {
         Button(action: viewAllAction) {
-            Text("View all categories")
+            Text(DS.GiftFilters.viewAllButtonLabel)
                 .font(.system(size: 14))
                 .padding(.horizontal, 12)
                 .padding(.vertical, 5)

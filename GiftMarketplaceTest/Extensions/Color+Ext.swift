@@ -2,6 +2,7 @@
 
 import SwiftUI
 
+// Color helpers & app palette
 extension Color {
     static let customLightBackground = Color(hex: "#EFF3FF")
     static let customDarkBackground = Color(hex: "#757E9A")

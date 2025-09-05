@@ -14,48 +14,23 @@ struct MainScreen: View {
     var body: some View {
         TabView(selection: $selection) {
             GiftScreen()
-                .tabItem {
-                    VStack {
-                        Text("Gifts")
-                        Image("gift")
-                    }
-                }
+                .tabItemView(for: .gifts)
                 .tag(AppTab.gifts)
             
-            Text("Gifts")
-                .tabItem {
-                    VStack {
-                        Text("Gifts")
-                        Image("tulip")
-                    }
-                }
+            Text(DS.TabBar.title(for: .flowers))
+                .tabItemView(for: .flowers)
                 .tag(AppTab.flowers)
             
-            Text("Events")
-                .tabItem {
-                    VStack {
-                        Text("Events")
-                        Image("events")
-                    }
-                }
+            Text(DS.TabBar.title(for: .events))
+                .tabItemView(for: .events)
                 .tag(AppTab.events)
             
-            Text("Cart")
-                .tabItem {
-                    VStack {
-                        Text("Cart")
-                        Image("cart")
-                    }
-                }
+            Text(DS.TabBar.title(for: .cart))
+                .tabItemView(for: .cart)
                 .tag(AppTab.cart)
             
-            Text("Profile")
-                .tabItem {
-                    VStack {
-                        Text("Profile")
-                        Image("profile")
-                    }
-                }
+            Text(DS.TabBar.title(for: .profile))
+                .tabItemView(for: .profile)
                 .tag(AppTab.profile)
         }
         .onAppear(perform: setupTabBarAppearance)
@@ -85,3 +60,7 @@ struct MainScreen: View {
 #Preview {
     MainScreen()
 }
+
+
+
+

@@ -2,17 +2,23 @@
 
 import SwiftUI
 
+enum AppKeys {
+    enum Storage {
+        static let accessTokenKey = "authIDToken"
+        static let skipToken = "skipToken"
+    }
+}
+
 struct EntryView: View {
-    @AppStorage("authIDToken") private var storedToken: String = ""
+    @AppStorage(AppKeys.Storage.accessTokenKey) private var storedToken: String = ""
+    @State private var didSkipThisSession = false
+
+    private var shouldShowAuth: Bool { storedToken.isEmpty && !didSkipThisSession }
 
     var body: some View {
         ZStack {
-            if storedToken.isEmpty {
-                SignInScreen(
-                    onSignedIn: { token in
-                        storedToken = token
-                    }
-                )
+            if shouldShowAuth {
+                SignInScreen(onSignedIn: saveToken)
                 .transition(.opacity)
                 .zIndex(2)
             } else {
@@ -21,7 +27,15 @@ struct EntryView: View {
                     .zIndex(1)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: !storedToken.isEmpty)
+        .animation(.easeInOut(duration: 0.3), value: shouldShowAuth)
+    }
+    
+    private func saveToken(_ token: String) {
+        if token == AppKeys.Storage.skipToken {
+            didSkipThisSession = true
+        } else {
+            storedToken = token
+        }
     }
 }
 

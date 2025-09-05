@@ -3,6 +3,7 @@
 
 import UIKit
 
+// Hex initializer and shared color used for UITabBar appearance
 extension UIColor {
     static let tabBarColor = UIColor(hex: "#7585B7")
     

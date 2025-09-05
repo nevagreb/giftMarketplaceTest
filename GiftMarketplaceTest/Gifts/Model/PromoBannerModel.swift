@@ -12,10 +12,10 @@ struct PromoBannerModel: Identifiable {
     let imageName: String
     
     static let mockData = PromoBannerModel(
-        title: "UPCOMING\nHOLIDAYS SOON",
-        buttonTitle: "Call to action",
+        title: DS.GiftBanner.title,
+        buttonTitle: DS.GiftBanner.buttonTitle,
         background: .bannerBackground,
         fontColor: .bannerFontColor,
-        imageName: "bouquet"
+        imageName: DS.GiftBanner.imageName
     )
 }

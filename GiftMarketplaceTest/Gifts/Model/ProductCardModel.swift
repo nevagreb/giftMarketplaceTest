@@ -9,10 +9,9 @@ struct ProductCardModel: Identifiable {
     var isFavorite: Bool
     
     static let mockData: [Self] = {
-        [.init(imageName: "product1", isFavorite: false),
-        .init(imageName: "product2", isFavorite: true),
-         .init(imageName: "product1", isFavorite: true),
-         .init(imageName: "product2", isFavorite: true),
-        ]
+        [.init(imageName: DS.GiftProduct.Image.product1.rawValue, isFavorite: false),
+         .init(imageName: DS.GiftProduct.Image.product2.rawValue, isFavorite: true),
+         .init(imageName: DS.GiftProduct.Image.product1.rawValue, isFavorite: false),
+         .init(imageName: DS.GiftProduct.Image.product2.rawValue, isFavorite: false)]
     }()
 }

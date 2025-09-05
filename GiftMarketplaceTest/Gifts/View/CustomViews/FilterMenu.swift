@@ -11,7 +11,7 @@ struct FilterMenu: View {
 
     var body: some View {
         Menu {
-            Picker("Choose filter", selection: $selection) {
+            Picker(DS.GiftFilters.pickerName, selection: $selection) {
                 ForEach(options, id: \.self) { option in
                     Text(option).tag(option)
                 }
@@ -20,7 +20,7 @@ struct FilterMenu: View {
             HStack(spacing: 6) {
                 Text(selection)
                     .font(.system(size: 14))
-                Image(systemName: "chevron.down")
+                Image(systemName: DS.GiftFilters.chevronImageName)
                     .font(.system(size: 14))
                     .imageScale(.small)
             }
@@ -39,5 +39,5 @@ struct FilterMenu: View {
 
 
 #Preview {
-    FilterMenu(options: DS.Filters.Types.options, selection: .constant("Giftbox"))
+    FilterMenu(options: DS.GiftFilters.Types.options, selection: .constant(DS.GiftFilters.Types.options[0]))
 }

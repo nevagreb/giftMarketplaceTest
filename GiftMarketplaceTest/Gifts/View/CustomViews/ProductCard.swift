@@ -17,7 +17,7 @@ struct ProductCard: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 
             Button(action: onTapHeart) {
-                Image(systemName: product.isFavorite ? "heart.fill" : "heart")
+                Image(systemName: product.isFavorite ? DS.GiftProduct.heartFillImageName : DS.GiftProduct.heartImageName)
                     .frame(width: 24, height: 24)
                     .padding(10)
                     .foregroundStyle(.white)

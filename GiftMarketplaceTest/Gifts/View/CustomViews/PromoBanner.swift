@@ -14,7 +14,7 @@ struct PromoBanner: View {
             HStack {
                 VStack(alignment: .leading, spacing: 17) {
                     Text(promo.title)
-                        .font(.custom("Impact", size: 28))
+                        .font(.custom(DS.Font.titleStyleFont, size: 28))
                         .foregroundStyle(promo.fontColor)
                         .lineLimit(2)
                         .minimumScaleFactor(0.5)
