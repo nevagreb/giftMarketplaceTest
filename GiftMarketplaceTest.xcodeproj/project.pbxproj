@@ -10,12 +10,10 @@
 		63330F2B2E6A3A2C008809C4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 63330F2A2E6A3A2C008809C4 /* FirebaseAuth */; };
 		63330F2E2E6A3A40008809C4 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 63330F2D2E6A3A40008809C4 /* GoogleSignIn */; };
 		63330F302E6A3A40008809C4 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63330F2F2E6A3A40008809C4 /* GoogleSignInSwift */; };
-		63330F362E6A3C99008809C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63330F352E6A3C99008809C4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6302D1702E69A15A008E6185 /* GiftMarketplaceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftMarketplaceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		63330F352E6A3C99008809C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -58,7 +56,6 @@
 			children = (
 				6302D1722E69A15A008E6185 /* GiftMarketplaceTest */,
 				6302D1712E69A15A008E6185 /* Products */,
-				63330F352E6A3C99008809C4 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,7 +138,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63330F362E6A3C99008809C4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
