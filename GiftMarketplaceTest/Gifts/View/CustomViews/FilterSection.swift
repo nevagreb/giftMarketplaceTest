@@ -43,7 +43,7 @@ struct FilterSection: View {
                 .background(
                     Capsule(style: .continuous)
                         .fill(Color(UIColor.systemBackground))
-                        .overlay(Capsule().stroke(Color.customBackground, lineWidth: 1))
+                        .overlay(Capsule().stroke(Color.customLightBackground, lineWidth: 1))
                 )
         }
         .buttonStyle(.plain)
@@ -76,5 +76,5 @@ struct FilterSection: View {
                   viewAllAction: {},
                   onToggleFavorite: {_ in})
     .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .background(Color.customBackground)
+    .background(Color.customLightBackground)
 }

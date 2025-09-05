@@ -5,6 +5,7 @@ import SwiftUI
 struct SignInScreen: View {
     let onSignedIn: (String) -> Void
     @StateObject private var vm = SignInViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -24,7 +25,7 @@ struct SignInScreen: View {
                     .tint(.primary)
                 }
             }
-            .overlay { if vm.isLoading { ProgressView().controlSize(.large) } }
+            .overlay { if vm.isLoading { ProgressView().controlSize(.large).tint(.primary) } }
             .alert("Sign-in error",
                    isPresented: Binding(get: { vm.error != nil },
                                         set: { if !$0 { vm.error = nil } })) {
@@ -78,8 +79,9 @@ struct SignInScreen: View {
     
     private var background: some View {
         ZStack {
-            Color.customBackground
+            colorScheme == .light ? Color.customLightBackground : Color.customDarkBackground
             Image("circle")
+                .foregroundStyle(colorScheme == .light ? Color.lightCircleBlue : Color.darkCircleBlue)
             Image("flower")
         }
         .ignoresSafeArea()

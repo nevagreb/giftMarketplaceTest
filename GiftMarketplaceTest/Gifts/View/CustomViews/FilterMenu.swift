@@ -6,6 +6,8 @@ import SwiftUI
 struct FilterMenu: View {
     let options: [String]
     @Binding var selection: String
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         Menu {
@@ -26,7 +28,8 @@ struct FilterMenu: View {
             .padding(.vertical, 5)
             .background(
                 Capsule(style: .continuous)
-                    .fill(Color.customBackground)
+                    .fill(colorScheme == .light ?
+                          Color.customLightBackground : Color.customDarkBackground)
             )
         }
         .tint(.primary)

@@ -3,10 +3,14 @@
 import SwiftUI
 
 extension Color {
-    static let customBackground = Color(hex: "#EFF3FF")
+    static let customLightBackground = Color(hex: "#EFF3FF")
+    static let customDarkBackground = Color(hex: "#757E9A")
     static let bannerBackground = Color(hex: "#BA4347")
     static let bannerFontColor = Color(hex: "#FFBCBD")
-    
+    static let darkGrey = Color(hex: "#757E9A")
+    static let lightCircleBlue = Color(hex: "#D0D8EF")
+    static let darkCircleBlue = Color(hex: "#555D74")
+
     init(hex: String, alpha: Double = 1.0) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")

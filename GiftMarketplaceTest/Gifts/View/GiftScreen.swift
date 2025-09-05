@@ -4,6 +4,7 @@ import SwiftUI
 
 struct GiftScreen: View {
     @State private var currency = "USD"
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -21,7 +22,7 @@ struct GiftScreen: View {
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.customBackground.ignoresSafeArea())
+            .background(colorScheme == .light ? Color.customLightBackground.ignoresSafeArea() : Color.customDarkBackground.ignoresSafeArea())
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {}) {
