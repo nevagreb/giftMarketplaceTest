@@ -3,14 +3,15 @@
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import Foundation
 import GoogleSignIn
 
 @MainActor
 final class SignInViewModel: NSObject, ObservableObject {
     @Published var isLoading = false
     @Published var error: String?
-    @Published var user: User?
     
+    private var user: User?
     private var authListenerHandle: AuthStateDidChangeListenerHandle?
     private var currentNonce: String?
     private var appleController: ASAuthorizationController?
@@ -134,8 +135,11 @@ final class SignInViewModel: NSObject, ObservableObject {
             }
         }
         
+        // Network error
+        if let net = error as? NetworkError { return net.errorDescription ?? "" }
+        
         // Other
-        return ns.localizedDescription
+        return "Something goes wrong. Try again later."
     }
     
     private func randomNonceString(length: Int = 32) -> String {
